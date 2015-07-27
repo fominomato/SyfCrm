@@ -1,0 +1,47 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>EbNotaCredito</h1>
+
+        <table class="record_properties">
+            <tbody>
+            <tr>
+                <th>Idnotacredito</th>
+                <td>{{ entity.idNotaCredito }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ entity.nome }}</td>
+            </tr>
+            <tr>
+                <th>Chassis</th>
+                <td>{{ entity.chassis }}</td>
+            </tr>
+            <tr>
+                <th>Valor</th>
+                <td>{{ entity.valor }}</td>
+            </tr>
+            <tr>
+                <th>Dtcadastro</th>
+                <td>{{ entity.dtCadastro|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('notacredito') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('notacredito_edit', { 'id': entity.idNotaCredito }) }}">
+                    Edit
+                </a>
+            </li>
+            <li>{{ form(delete_form) }}</li>
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,68 @@
+<?php
+
+namespace AutenticacaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EbModulo
+ *
+ * @ORM\Table(name="eb_modulo")
+ * @ORM\Entity
+ */
+class EbModulo
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_modulo", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idModulo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=100, nullable=true)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ativo", type="string", length=1, nullable=false)
+     */
+    private $ativo = '1';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="excluido", type="string", length=1, nullable=false)
+     */
+    private $excluido = '0';
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="EbPerfil", inversedBy="idModulo")
+     * @ORM\JoinTable(name="eb_modulo_permissao",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_modulo", referencedColumnName="id_modulo")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_perfil", referencedColumnName="id_perfil")
+     *   }
+     * )
+     */
+    private $idPerfil;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idPerfil = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

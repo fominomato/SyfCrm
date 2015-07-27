@@ -1,0 +1,25 @@
+compras:
+    resource: "@ComprasBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+venda:
+    resource: "@VendaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+home:
+    resource: "@HomeBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+autenticacao:
+    resource: "@PrincipalBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+cliente:
+    resource: "@ClienteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

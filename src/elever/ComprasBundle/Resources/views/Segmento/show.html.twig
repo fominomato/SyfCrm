@@ -1,0 +1,39 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>Apresentação do item selecionado</h1>
+
+        <table class="record_properties">
+        <tbody>
+        <tr>
+            <th>Idsegmento</th>
+            <td>{{ entity.idSegmento }}</td>
+        </tr>
+        <tr>
+            <th>Nome</th>
+            <td>{{ entity.nome }}</td>
+        </tr>
+        <tr>
+            <th>Ativo</th>
+            <td>{{ entity.ativo }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('compras_segmento') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('compras_segmento_edit', { 'id': entity.idSegmento }) }}">
+                Edit
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Listagens de itens e precos</h1>
+
+    <table class="records_list">
+        <thead>
+        <tr>
+            <th>Idsubsegmento</th>
+            <th>Modelo</th>
+            <th>Baumaster</th>
+            <th>Variante</th>
+            <th>Configuracao</th>
+            <th>Precotabela</th>
+            <th>Precomin</th>
+            <th>Precomax</th>
+            <th>Moeda</th>
+            <th>Dtcadastro</th>
+            <th>Ativo</th>
+            <th>Dtinicio</th>
+            <th>Dtfim</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>
+                    <a href="{{ path('compras_subsegmento_show', { 'id': entity.idSubsegmento }) }}">{{ entity.idSubsegmento }}</a>
+                </td>
+                <td>{{ entity.modelo }}</td>
+                <td>{{ entity.baumaster }}</td>
+                <td>{{ entity.variante }}</td>
+                <td>{{ entity.configuracao }}</td>
+                <td>{{ entity.precoTabela }}</td>
+                <td>{{ entity.precoMin }}</td>
+                <td>{{ entity.precoMax }}</td>
+                <td>{{ entity.moeda }}</td>
+                <td>{% if entity.dtCadastro %}{{ entity.dtCadastro|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.ativo }}</td>
+                <td>{% if entity.dtInicio %}{{ entity.dtInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dtFim %}{{ entity.dtFim|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('compras_subsegmento_show', { 'id': entity.idSubsegmento }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('compras_subsegmento_edit', { 'id': entity.idSubsegmento }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('compras_subsegmento_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    </div>
+{% endblock %}

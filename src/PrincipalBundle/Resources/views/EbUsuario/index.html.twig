@@ -1,0 +1,61 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block title %}Elever-Página Configuracoes{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>EbUsuario list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Idusuario</th>
+                <th>Nome</th>
+                <th>Imagen</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Token</th>
+                <th>Ativo</th>
+                <th>Excluido</th>
+                <th>Dtcadastro</th>
+                <th>Salt</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('configuracao_usuario_show', { 'id': entity.idUsuario }) }}">{{ entity.idUsuario }}</a></td>
+                <td>{{ entity.nome }}</td>
+                <td>{{ entity.imagen }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.password }}</td>
+                <td>{{ entity.token }}</td>
+                <td>{{ entity.ativo }}</td>
+                <td>{{ entity.excluido }}</td>
+                <td>{% if entity.dtCadastro %}{{ entity.dtCadastro|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.salt }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('configuracao_usuario_show', { 'id': entity.idUsuario }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('configuracao_usuario_edit', { 'id': entity.idUsuario }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('configuracao_usuario_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    </div>
+    {% endblock %}

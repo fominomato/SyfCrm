@@ -1,0 +1,60 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>EbNfeItem list</h1>
+
+        <table class="records_list">
+            <thead>
+            <tr>
+                <th>Idnfeitem</th>
+                <th>Nome</th>
+                <th>Descricao</th>
+                <th>Cor</th>
+                <th>Valor</th>
+                <th>Icms</th>
+                <th>Ipi</th>
+                <th>Pis</th>
+                <th>Dtcadastro</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>
+                        <a href="{{ path('compras_nfe_item_show', { 'id': entity.idNfeItem }) }}">{{ entity.idNfeItem }}</a>
+                    </td>
+                    <td>{{ entity.nome }}</td>
+                    <td>{{ entity.descricao }}</td>
+                    <td>{{ entity.cor }}</td>
+                    <td>{{ entity.valor }}</td>
+                    <td>{{ entity.icms }}</td>
+                    <td>{{ entity.ipi }}</td>
+                    <td>{{ entity.pis }}</td>
+                    <td>{% if entity.dtCadastro %}{{ entity.dtCadastro|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('compras_nfe_item_show', { 'id': entity.idNfeItem }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('compras_nfe_item_edit', { 'id': entity.idNfeItem }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('compras_nfe_item_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

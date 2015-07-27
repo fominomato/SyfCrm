@@ -1,0 +1,12 @@
+{% if regras %}
+
+    <dl id="regra_{{ action }}" class="dl-horizontal">
+
+        {% for regra in regras %}
+            <dt>{{ regra.nome }}</dt>
+            <dd>{{ regra.valor }} {{ regra.idTipoValor.nome }}</dd>
+        {% endfor %}
+
+    </dl>
+
+{% endif %}

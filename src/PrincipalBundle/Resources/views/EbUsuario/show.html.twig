@@ -1,0 +1,68 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block title %}Elever-Página Configuracoes{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>EbUsuario</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Idusuario</th>
+                <td>{{ entity.idUsuario }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ entity.nome }}</td>
+            </tr>
+            <tr>
+                <th>Imagen</th>
+                <td>{{ entity.imagen }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>Token</th>
+                <td>{{ entity.token }}</td>
+            </tr>
+            <tr>
+                <th>Ativo</th>
+                <td>{{ entity.ativo }}</td>
+            </tr>
+            <tr>
+                <th>Excluido</th>
+                <td>{{ entity.excluido }}</td>
+            </tr>
+            <tr>
+                <th>Dtcadastro</th>
+                <td>{{ entity.dtCadastro|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Salt</th>
+                <td>{{ entity.salt }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('configuracao_usuario') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('configuracao_usuario_edit', { 'id': entity.idUsuario }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+    </div>
+{% endblock %}

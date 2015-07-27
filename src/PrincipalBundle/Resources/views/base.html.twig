@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Elever-CRM!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        {% stylesheets filter="cssrewrite" output="src/PrincipalBundle/Resources/css/general.css"
+        '@PrincipalBundle/Resources/public/css/*'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
+        {% block javascriptsHead %}
+            <script type="text/javascript" src="{{ asset("bundles/principal/js/jquery-2.1.4.min.js") }}"></script>
+            <script type="text/javascript" src="{{ asset("bundles/principal/js/jquery-ui.min.js") }}"></script>
+            <script type="text/javascript" src="{{ asset("bundles/principal/js/bootstrap.min.js") }}"></script>
+        {% endblock %}
+
+    </head>
+    <body>
+        <div id="wrap">
+            {% block nav %}{% endblock %}
+
+            {% block sidebar %}{% endblock %}
+
+            {% block body %}{% endblock %}
+        </div>
+
+        {% block footer %}
+            {% include 'PrincipalBundle::footer.html.twig' %}
+        {% endblock %}
+
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset("bundles/home/js/navbar.js") }}"></script>
+        {% endblock %}
+    </body>
+</html>

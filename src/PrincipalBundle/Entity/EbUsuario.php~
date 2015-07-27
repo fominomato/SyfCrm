@@ -1,0 +1,106 @@
+<?php
+
+namespace AutenticacaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EbUsuario
+ *
+ * @ORM\Table(name="eb_usuario", uniqueConstraints={@ORM\UniqueConstraint(name="id_usuario_UNIQUE", columns={"id_usuario"})}, indexes={@ORM\Index(name="FK_USUARIO_PERFIL_idx", columns={"id_perfil"})})
+ * @ORM\Entity
+ */
+class EbUsuario
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_usuario", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idUsuario;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=255, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="text", nullable=false)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="token", type="text", nullable=true)
+     */
+    private $token;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ativo", type="string", length=1, nullable=true)
+     */
+    private $ativo = '1';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="excluido", type="string", length=1, nullable=true)
+     */
+    private $excluido = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dt_cadastro", type="datetime", nullable=false)
+     */
+    private $dtCadastro = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \EbPerfil
+     *
+     * @ORM\ManyToOne(targetEntity="EbPerfil")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_perfil", referencedColumnName="id_perfil")
+     * })
+     */
+    private $idPerfil;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="EbEmpresa", inversedBy="idUsuario")
+     * @ORM\JoinTable(name="eb_usuario_empresa",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_empresa", referencedColumnName="id_empresa")
+     *   }
+     * )
+     */
+    private $idEmpresa;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idEmpresa = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

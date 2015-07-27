@@ -1,0 +1,61 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>EbNfe list</h1>
+
+        <table class="records_list">
+            <thead>
+            <tr>
+                <th>Idnfe</th>
+                <th>Chassis</th>
+                <th>Pedido</th>
+                <th>Valor</th>
+                <th>Pis</th>
+                <th>Cofins</th>
+                <th>Ipi</th>
+                <th>Nronfe</th>
+                <th>Icms</th>
+                <th>Dtnfe</th>
+                <th>Dtcadastro</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('compras_nfe_show', { 'id': entity.idNfe }) }}">{{ entity.idNfe }}</a></td>
+                    <td>{{ entity.chassis }}</td>
+                    <td>{{ entity.pedido }}</td>
+                    <td>{{ entity.valor }}</td>
+                    <td>{{ entity.pis }}</td>
+                    <td>{{ entity.cofins }}</td>
+                    <td>{{ entity.ipi }}</td>
+                    <td>{{ entity.nroNfe }}</td>
+                    <td>{{ entity.icms }}</td>
+                    <td>{% if entity.dtNfe %}{{ entity.dtNfe|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.dtCadastro %}{{ entity.dtCadastro|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('compras_nfe_show', { 'id': entity.idNfe }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('compras_nfe_edit', { 'id': entity.idNfe }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('compras_nfe_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

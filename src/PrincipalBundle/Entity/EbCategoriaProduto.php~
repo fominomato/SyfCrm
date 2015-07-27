@@ -1,0 +1,46 @@
+<?php
+
+namespace AutenticacaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EbCategoriaProduto
+ *
+ * @ORM\Table(name="eb_categoria_produto")
+ * @ORM\Entity
+ */
+class EbCategoriaProduto
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_categoria_produto", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCategoriaProduto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=100, nullable=true)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ativo", type="string", length=1, nullable=false)
+     */
+    private $ativo = '1';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="excluido", type="string", length=1, nullable=false)
+     */
+    private $excluido = '0';
+
+
+}

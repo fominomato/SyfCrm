@@ -1,0 +1,4 @@
+services:
+    elever.ComprasBundle.Service.Ruler:
+        class:        elever\ComprasBundle\Service\Ruler
+        arguments:    [\PrincipalBundle\Entity\EbUsuario]

@@ -1,0 +1,60 @@
+<?php
+
+namespace AutenticacaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TbCep
+ *
+ * @ORM\Table(name="tb_cep", indexes={@ORM\Index(name="idx_tb_cep_01", columns={"cep"}), @ORM\Index(name="idx_tb_cep_02", columns={"estado", "cidade", "bairro", "logradouro"})})
+ * @ORM\Entity
+ */
+class TbCep
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cep", type="string", length=8, nullable=false)
+     */
+    private $cep;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="logradouro", type="string", length=90, nullable=false)
+     */
+    private $logradouro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bairro", type="string", length=50, nullable=false)
+     */
+    private $bairro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cidade", type="string", length=50, nullable=false)
+     */
+    private $cidade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="estado", type="string", length=2, nullable=false)
+     */
+    private $estado;
+
+
+}

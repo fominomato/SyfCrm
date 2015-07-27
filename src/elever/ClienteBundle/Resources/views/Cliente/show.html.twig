@@ -1,0 +1,64 @@
+{% extends 'ClienteBundle::base.html.twig' %}
+
+{% block body %}
+    <h1>Cliente</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ entity.nome }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Cnpj</th>
+                <td>{{ entity.cnpj }}</td>
+            </tr>
+            <tr>
+                <th>Cpf</th>
+                <td>{{ entity.cpf }}</td>
+            </tr>
+            <tr>
+                <th>Emailoutro</th>
+                <td>{{ entity.emailOutro }}</td>
+            </tr>
+            <tr>
+                <th>Ativo</th>
+                <td>{{ entity.ativo }}</td>
+            </tr>
+            <tr>
+                <th>Excluido</th>
+                <td>{{ entity.excluido }}</td>
+            </tr>
+            <tr>
+                <th>Dtcadastro</th>
+                <td>{{ entity.dtCadastro|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dtatualizacao</th>
+                <td>{{ entity.dtAtualizacao|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('cliente') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('cliente_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

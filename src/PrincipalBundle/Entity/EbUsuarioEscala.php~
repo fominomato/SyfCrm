@@ -1,0 +1,140 @@
+<?php
+
+namespace AutenticacaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EbUsuarioEscala
+ *
+ * @ORM\Table(name="eb_usuario_escala", indexes={@ORM\Index(name="fk_eb_usuario_escala_usuario", columns={"id_usuario"})})
+ * @ORM\Entity
+ */
+class EbUsuarioEscala
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_usuario_escala", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idUsuarioEscala;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipo", type="string", length=1, nullable=true)
+     */
+    private $tipo;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia0_i", type="string", length=5, nullable=true)
+     */
+    private $dia0I;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia0_f", type="string", length=5, nullable=true)
+     */
+    private $dia0F;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia1_i", type="string", length=5, nullable=true)
+     */
+    private $dia1I;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia1_f", type="string", length=5, nullable=true)
+     */
+    private $dia1F;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia2_i", type="string", length=5, nullable=true)
+     */
+    private $dia2I;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia2_f", type="string", length=5, nullable=true)
+     */
+    private $dia2F;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia3_i", type="string", length=5, nullable=true)
+     */
+    private $dia3I;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia3_f", type="string", length=5, nullable=true)
+     */
+    private $dia3F;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia4_i", type="string", length=5, nullable=true)
+     */
+    private $dia4I;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia4_f", type="string", length=5, nullable=true)
+     */
+    private $dia4F;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia5_i", type="string", length=5, nullable=true)
+     */
+    private $dia5I;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia5_f", type="string", length=5, nullable=true)
+     */
+    private $dia5F;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia6_i", type="string", length=5, nullable=true)
+     */
+    private $dia6I;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dia6_f", type="string", length=5, nullable=true)
+     */
+    private $dia6F;
+
+    /**
+     * @var \EbUsuario
+     *
+     * @ORM\ManyToOne(targetEntity="EbUsuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario")
+     * })
+     */
+    private $idUsuario;
+
+
+}

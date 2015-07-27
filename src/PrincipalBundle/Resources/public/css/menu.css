@@ -1,0 +1,20 @@
+.menu_color{
+    background-color:#32383e;
+}
+
+.menu_height{
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.menu_logo{
+    width: 50px;
+    height: 45px;
+    border: 0px;
+}
+
+.profileImage{
+    width: 45px;
+    height: 45px;
+    margin: 0 auto;
+}

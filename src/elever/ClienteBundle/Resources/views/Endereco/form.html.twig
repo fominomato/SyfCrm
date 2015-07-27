@@ -1,0 +1,124 @@
+<div class="panel panel-default addEndereco">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-7">
+                <h3>Adicionar endereco ao cliente</h3>
+            </div>
+
+            <div class="col-xs-1">
+                <button type="button" class="btn btn-info addButton"><i class="glyphicon glyphicon-plus"></i></button>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-4">
+                <label class="control-label" for="cep">Cep: </label>
+                <input type="text" placeholder="Ex.: 09171-210" class="form-control" name="endereco[0].cep" id="cep">
+            </div>
+            <div class="col-xs-4">
+                <label class="control-label" for="favorito"></label>
+                <div>
+                    <label class="radio-inline">Endereço principal:</label>
+                    <input type="checkbox" name="endereco[0].favorito" id="favorito" value="1">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-8">
+                <label class="control-label" for="logradouro">Logradouro: </label>
+                <input type="text" placeholder="Ex.: Rua Formosa, 54" class="form-control" name="endereco[0].logradouro" id="logradouro">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+
+            <div class="col-xs-3">
+                <label class="control-label" for="bairro">Bairro: </label>
+                <input type="text" placeholder="Digite um bairro" class="form-control" name="endereco[0].bairro" id="bairro" maxlength="100">
+            </div>
+
+            <div class="col-xs-3">
+                <label class="control-label" for="cidade">Cidade: </label>
+                <input type="text" placeholder="Digite uma cidade" class="form-control" name="endereco[0].cidade" id="cidade" maxlength="100">
+            </div>
+
+            <div class="col-xs-2">
+                <label class="control-label" for="estado">Estado: </label>
+                <input type="text" placeholder="UF" class="form-control" name="endereco[0].uf" id="uf" maxlength="2">
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- The template for adding new field -->
+<div class="form-group hide" id="enderecoTemplate">
+    <div class="panel panel-default addEndereco">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-7">
+                    <h3>Adicionar endereco ao cliente</h3>
+                </div>
+
+                <div class="col-xs-1">
+                    <button type="button" class="btn btn-danger removeButton"><i class="glyphicon glyphicon-minus"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-4">
+                    <label class="control-label" for="cep">Cep: </label>
+                    <input type="text" placeholder="Ex.: 09171-210" class="form-control" name="cep" id="cep">
+                </div>
+                <div class="col-xs-4">
+                    <label class="control-label" for="favorito"></label>
+                    <div>
+                        <label class="radio-inline">Endereço principal:</label>
+                        <input type="checkbox" name="favorito" id="favorito" value="1">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-8">
+                    <label class="control-label" for="logradouro">Logradouro: </label>
+                    <input type="text" placeholder="Ex.: Rua Formosa, 54" class="form-control" name="logradouro" id="logradouro">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+
+                <div class="col-xs-3">
+                    <label class="control-label" for="bairro">Bairro: </label>
+                    <input type="text" placeholder="Digite um bairro" class="form-control" name="bairro" id="bairro" maxlength="100">
+                </div>
+
+                <div class="col-xs-3">
+                    <label class="control-label" for="cidade">Cidade: </label>
+                    <input type="text" placeholder="Digite uma cidade" class="form-control" name="cidade" id="cidade" maxlength="100">
+                </div>
+
+                <div class="col-xs-1">
+                    <label class="control-label" for="estado">Estado: </label>
+                    <input type="text" placeholder="UF" class="form-control" name="uf" id="uf" maxlength="2">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>EbRegra list</h1>
+
+        <table class="records_list">
+            <thead>
+            <tr>
+                <th>Idregra</th>
+                <th>Nome</th>
+                <th>Valor</th>
+                <th>Previsao</th>
+                <th>Dtinicio</th>
+                <th>Dtfim</th>
+                <th>Ativo</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td><a href="{{ path('compras_regra_show', { 'id': entity.idRegra }) }}">{{ entity.idRegra }}</a>
+                    </td>
+                    <td>{{ entity.nome }}</td>
+                    <td>{{ entity.valor }}</td>
+                    <td>{{ entity.previsao }}</td>
+                    <td>{% if entity.dtInicio %}{{ entity.dtInicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.dtFim %}{{ entity.dtFim|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ entity.ativo }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('compras_regra_show', { 'id': entity.idRegra }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('compras_regra_edit', { 'id': entity.idRegra }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('compras_regra_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

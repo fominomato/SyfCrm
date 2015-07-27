@@ -1,0 +1,101 @@
+<?php
+
+namespace AutenticacaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EbProduto
+ *
+ * @ORM\Table(name="eb_produto", uniqueConstraints={@ORM\UniqueConstraint(name="id_produto_UNIQUE", columns={"id_produto"})}, indexes={@ORM\Index(name="FK_PRODUTO_EMPRESA_idx", columns={"id_empresa"}), @ORM\Index(name="FK_PRODUTO_CATEGORIA_PRODUTO_idx", columns={"id_categoria_produto"})})
+ * @ORM\Entity
+ */
+class EbProduto
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_produto", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idProduto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=150, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="text", nullable=true)
+     */
+    private $image;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="valor", type="integer", nullable=true)
+     */
+    private $valor;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="moeda", type="string", length=3, nullable=false)
+     */
+    private $moeda = 'R$';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ativo", type="string", length=1, nullable=false)
+     */
+    private $ativo = '1';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="excluido", type="string", length=1, nullable=false)
+     */
+    private $excluido = '0';
+
+    /**
+     * @var \EbEmpresa
+     *
+     * @ORM\ManyToOne(targetEntity="EbEmpresa")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_empresa", referencedColumnName="id_empresa")
+     * })
+     */
+    private $idEmpresa;
+
+    /**
+     * @var \EbCategoriaProduto
+     *
+     * @ORM\ManyToOne(targetEntity="EbCategoriaProduto")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_categoria_produto", referencedColumnName="id_categoria_produto")
+     * })
+     */
+    private $idCategoriaProduto;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="EbCliente", mappedBy="idProduto")
+     */
+    private $idCliente;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idCliente = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

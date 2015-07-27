@@ -1,0 +1,105 @@
+<?php
+
+namespace AutenticacaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EbEmpresa
+ *
+ * @ORM\Table(name="eb_empresa", uniqueConstraints={@ORM\UniqueConstraint(name="id_empresa_UNIQUE", columns={"id_empresa"})}, indexes={@ORM\Index(name="FK_REGIONAL_EMPRESA_idx", columns={"id_regional"})})
+ * @ORM\Entity
+ */
+class EbEmpresa
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_empresa", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idEmpresa;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=150, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="logradouro", type="text", nullable=true)
+     */
+    private $logradouro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bairro", type="text", nullable=true)
+     */
+    private $bairro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cidade", type="string", length=200, nullable=true)
+     */
+    private $cidade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uf", type="string", length=2, nullable=true)
+     */
+    private $uf;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ativo", type="string", length=1, nullable=false)
+     */
+    private $ativo = '1';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="excluido", type="string", length=1, nullable=false)
+     */
+    private $excluido = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dt_cadastro", type="datetime", nullable=true)
+     */
+    private $dtCadastro = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \EbRegional
+     *
+     * @ORM\ManyToOne(targetEntity="EbRegional")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_regional", referencedColumnName="id_regional")
+     * })
+     */
+    private $idRegional;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="EbUsuario", mappedBy="idEmpresa")
+     */
+    private $idUsuario;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idUsuario = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

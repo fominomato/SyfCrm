@@ -1,0 +1,57 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>EbRegra</h1>
+
+        <table class="record_properties">
+            <tbody>
+            <tr>
+                <th>Idregra</th>
+                <td>{{ entity.idRegra }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ entity.nome }}</td>
+            </tr>
+            <tr>
+                <th>Valor</th>
+                <td>{{ entity.valor }}</td>
+            </tr>
+            <tr>
+                <th>Previsao</th>
+                <td>{{ entity.previsao }}</td>
+            </tr>
+            <tr>
+                <th>Dtinicio</th>
+                <td>{{ entity.dtInicio|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dtfim</th>
+                <td>{{ entity.dtFim|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Ativo</th>
+                <td>{{ entity.ativo }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('compras_regra') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('compras_regra_edit', { 'id': entity.idRegra }) }}">
+                    Edit
+                </a>
+            </li>
+            <li>{{ form(delete_form) }}</li>
+        </ul>
+
+
+    </div>
+{% endblock %}

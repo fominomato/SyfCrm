@@ -1,0 +1,73 @@
+
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-inner">
+        <div class="container" style="width: auto;">
+            <a id="brand" href="/" class="navbar-link" >
+                <img src="{{ asset("bundles/principal/images/elever.png") }}" class="menu_logo pull-left">
+            </a>
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/">Principal</a>
+                    </li>
+                    <li>
+                        <a href="/cliente">Clientes</a>
+                    </li>
+                    <li>
+                        <a href="/venda">Vendas</a>
+                    </li>
+                    <li>
+                        <a href="/compras">Bonificação</a>
+                    </li>
+                    <li>
+                        <a href="/report">Report</a>
+                    </li>
+                    {% if is_granted("ROLE_SUPER") %}
+                        <li role="presentation">
+                            <a href="/configuracao">Configuracoes</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                <img src="{{ asset( app.security.getToken().getUser().getImagen() ) }}" class="pull-right img-circle profileImage">
+
+                <ul class="nav pull-right">
+                    <li id="fat-menu" class="dropdown">
+                        <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown"
+                           style="padding: 5px 10px;">
+                            {{ app.security.getToken().getUser().getNome() | upper }}<b class="caret"></b>
+                            <br />
+                            <span class="small">
+                                {% for perfil in app.security.getToken().getUser().getIdPerfil() %}
+                                    {{ perfil.nome|e }}
+                                {% endfor %}
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="drop3">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Mensagens</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Telefonia</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Chat</a></li>
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Atendimento</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div><!-- /.navbar-collapse -->
+</nav>
+
+<div class="clear"></div>

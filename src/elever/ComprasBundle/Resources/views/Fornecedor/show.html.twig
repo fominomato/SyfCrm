@@ -1,0 +1,34 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>EbFornecedor</h1>
+
+        <table class="record_properties">
+            <tbody>
+            <tr>
+                <th>Idfornecedor</th>
+                <td>{{ entity.idFornecedor }}</td>
+            </tr>
+            <tr>
+                <th>Nome</th>
+                <td>{{ entity.nome }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('compras_fornecedor') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('compras_fornecedor_edit', { 'id': entity.idFornecedor }) }}">
+                    Edit
+                </a>
+            </li>
+            <li>{{ form(delete_form) }}</li>
+        </ul>
+    </div>
+{% endblock %}

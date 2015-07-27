@@ -1,0 +1,45 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>EbFornecedor list</h1>
+
+        <table class="records_list">
+            <thead>
+            <tr>
+                <th>Idfornecedor</th>
+                <th>Nome</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>
+                        <a href="{{ path('compras_fornecedor_show', { 'id': entity.idFornecedor }) }}">{{ entity.idFornecedor }}</a>
+                    </td>
+                    <td>{{ entity.nome }}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('compras_fornecedor_show', { 'id': entity.idFornecedor }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('compras_fornecedor_edit', { 'id': entity.idFornecedor }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('compras_fornecedor_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>EbNotaCredito creation</h1>
+
+        {{ form(form) }}
+
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('notacredito') }}">
+                    Back to the list
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

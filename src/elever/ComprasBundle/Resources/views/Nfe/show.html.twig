@@ -1,0 +1,70 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>EbNfe</h1>
+
+        <table class="record_properties">
+            <tbody>
+            <tr>
+                <th>Idnfe</th>
+                <td>{{ entity.idNfe }}</td>
+            </tr>
+            <tr>
+                <th>Chassis</th>
+                <td>{{ entity.chassis }}</td>
+            </tr>
+            <tr>
+                <th>Pedido</th>
+                <td>{{ entity.pedido }}</td>
+            </tr>
+            <tr>
+                <th>Valor</th>
+                <td>{{ entity.valor }}</td>
+            </tr>
+            <tr>
+                <th>Pis</th>
+                <td>{{ entity.pis }}</td>
+            </tr>
+            <tr>
+                <th>Cofins</th>
+                <td>{{ entity.cofins }}</td>
+            </tr>
+            <tr>
+                <th>Ipi</th>
+                <td>{{ entity.ipi }}</td>
+            </tr>
+            <tr>
+                <th>Nronfe</th>
+                <td>{{ entity.nroNfe }}</td>
+            </tr>
+            <tr>
+                <th>Icms</th>
+                <td>{{ entity.icms }}</td>
+            </tr>
+            <tr>
+                <th>Dtnfe</th>
+                <td>{{ entity.dtNfe|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Dtcadastro</th>
+                <td>{{ entity.dtCadastro|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <ul class="record_actions">
+            <li>
+                <a href="{{ path('compras_nfe') }}">
+                    Back to the list
+                </a>
+            </li>
+            <li>
+                <a href="{{ path('compras_nfe_edit', { 'id': entity.idNfe }) }}">
+                    Edit
+                </a>
+            </li>
+            <li>{{ form(delete_form) }}</li>
+        </ul>
+    </div>
+{% endblock %}

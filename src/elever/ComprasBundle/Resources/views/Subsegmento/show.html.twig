@@ -1,0 +1,78 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Detalhamento do item selecionado</h1>
+
+    <table class="record_properties">
+        <tbody>
+        <tr>
+            <th>Idsubsegmento</th>
+            <td>{{ entity.idSubsegmento }}</td>
+        </tr>
+        <tr>
+            <th>Modelo</th>
+            <td>{{ entity.modelo }}</td>
+        </tr>
+        <tr>
+            <th>Baumaster</th>
+            <td>{{ entity.baumaster }}</td>
+        </tr>
+        <tr>
+            <th>Variante</th>
+            <td>{{ entity.variante }}</td>
+        </tr>
+        <tr>
+            <th>Configuracao</th>
+            <td>{{ entity.configuracao }}</td>
+        </tr>
+        <tr>
+            <th>Precotabela</th>
+            <td>{{ entity.precoTabela }}</td>
+        </tr>
+        <tr>
+            <th>Precomin</th>
+            <td>{{ entity.precoMin }}</td>
+        </tr>
+        <tr>
+            <th>Precomax</th>
+            <td>{{ entity.precoMax }}</td>
+        </tr>
+        <tr>
+            <th>Moeda</th>
+            <td>{{ entity.moeda }}</td>
+        </tr>
+        <tr>
+            <th>Dtcadastro</th>
+            <td>{{ entity.dtCadastro|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Ativo</th>
+            <td>{{ entity.ativo }}</td>
+        </tr>
+        <tr>
+            <th>Dtinicio</th>
+            <td>{{ entity.dtInicio|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Dtfim</th>
+            <td>{{ entity.dtFim|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('compras_subsegmento') }}">
+                Back to the list
+            </a>
+        </li>
+        <li>
+            <a href="{{ path('compras_subsegmento_edit', { 'id': entity.idSubsegmento }) }}">
+                Edit
+            </a>
+        </li>
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+    </div>
+{% endblock %}

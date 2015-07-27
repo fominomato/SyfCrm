@@ -1,0 +1,189 @@
+<?php
+
+namespace AutenticacaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EbCliente
+ *
+ * @ORM\Table(name="eb_cliente", indexes={@ORM\Index(name="FK_CLIENTE_USUARIO_idx", columns={"id_usuario"}), @ORM\Index(name="FK_CLIENTE_MOMENTO_idx", columns={"id_momento"}), @ORM\Index(name="FK_CLIENTE_TEMPERATURA_idx", columns={"id_temperatura"})})
+ * @ORM\Entity
+ */
+class EbCliente
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_cliente", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCliente;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=200, nullable=true)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=false)
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cnpj", type="string", length=255, nullable=true)
+     */
+    private $cnpj;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="logradouro", type="text", nullable=true)
+     */
+    private $logradouro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cep", type="string", length=60, nullable=true)
+     */
+    private $cep;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bairro", type="text", nullable=true)
+     */
+    private $bairro;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="cidade", type="string", length=150, nullable=true)
+     */
+    private $cidade;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="uf", type="string", length=2, nullable=true)
+     */
+    private $uf;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ddd_telefone", type="string", length=3, nullable=true)
+     */
+    private $dddTelefone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="telefone", type="string", length=10, nullable=true)
+     */
+    private $telefone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ddd_celular", type="string", length=3, nullable=true)
+     */
+    private $dddCelular;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="celular", type="string", length=10, nullable=true)
+     */
+    private $celular;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ativo", type="string", length=1, nullable=false)
+     */
+    private $ativo = '1';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="excluido", type="string", length=1, nullable=false)
+     */
+    private $excluido = '0';
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dt_cadastro", type="datetime", nullable=true)
+     */
+    private $dtCadastro;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dt_atualizacao", type="datetime", nullable=true)
+     */
+    private $dtAtualizacao = 'CURRENT_TIMESTAMP';
+
+    /**
+     * @var \EbUsuario
+     *
+     * @ORM\ManyToOne(targetEntity="EbUsuario")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_usuario", referencedColumnName="id_usuario")
+     * })
+     */
+    private $idUsuario;
+
+    /**
+     * @var \EbMomento
+     *
+     * @ORM\ManyToOne(targetEntity="EbMomento")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_momento", referencedColumnName="id_momento")
+     * })
+     */
+    private $idMomento;
+
+    /**
+     * @var \EbTemperatura
+     *
+     * @ORM\ManyToOne(targetEntity="EbTemperatura")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_temperatura", referencedColumnName="id_temperatura")
+     * })
+     */
+    private $idTemperatura;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="EbProduto", inversedBy="idCliente")
+     * @ORM\JoinTable(name="eb_cliente_produto",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="id_cliente", referencedColumnName="id_cliente")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="id_produto", referencedColumnName="id_produto")
+     *   }
+     * )
+     */
+    private $idProduto;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idProduto = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

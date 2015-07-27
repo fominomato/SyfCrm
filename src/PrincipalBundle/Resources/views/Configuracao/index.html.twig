@@ -1,0 +1,22 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block title %}Elever-Página Configuracoes{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <ul>
+            <li><a href="/configuracao/modulo">Modulo</a></li>
+            <li><a href="/configuracao/perfil">Perfil</a></li>
+            <li><a href="/configuracao/usuario">Usuarios</a></li>
+            <li><a href="/configuracao/regional">Regional</a></li>
+            <li><a href="/configuracao/empresa">Empresa</a></li>
+        </ul>
+    </div>
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset("bundles/home/js/navbar.js") }}"></script>
+    {% endblock %}
+
+    </div>
+{% endblock %}
+

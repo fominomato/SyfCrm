@@ -1,0 +1,65 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Listagem de pedidos</h1>
+
+        <table class="records_list">
+            <thead>
+            <tr>
+                <th>Idproduto</th>
+                <th>Pedido</th>
+                <th>Chassis</th>
+                <th>Valor</th>
+                <th>Moeda</th>
+                <th>Cor</th>
+                <th>Anofabricacao</th>
+                <th>Anomodelo</th>
+                <th>Ativo</th>
+                <th>Excluido</th>
+                <th>Dtcadastro</th>
+                <th>Dtatualizacao</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>
+                        <a href="{{ path('compras_pedido_show', { 'id': entity.idProduto }) }}">{{ entity.idProduto }}</a>
+                    </td>
+                    <td>{{ entity.pedido }}</td>
+                    <td>{{ entity.chassis }}</td>
+                    <td>{{ entity.valor }}</td>
+                    <td>{{ entity.moeda }}</td>
+                    <td>{{ entity.cor }}</td>
+                    <td>{{ entity.anoFabricacao }}</td>
+                    <td>{{ entity.anoModelo }}</td>
+                    <td>{{ entity.ativo }}</td>
+                    <td>{{ entity.excluido }}</td>
+                    <td>{% if entity.dtCadastro %}{{ entity.dtCadastro|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{% if entity.dtAtualizacao %}{{ entity.dtAtualizacao|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('compras_pedido_show', { 'id': entity.idProduto }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('compras_pedido_edit', { 'id': entity.idProduto }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('compras_pedido_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

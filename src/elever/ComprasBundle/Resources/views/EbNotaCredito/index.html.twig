@@ -1,0 +1,52 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>EbNotaCredito list</h1>
+
+        <table class="records_list">
+            <thead>
+            <tr>
+                <th>Idnotacredito</th>
+                <th>Nome</th>
+                <th>Chassis</th>
+                <th>Valor</th>
+                <th>Dtcadastro</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities %}
+                <tr>
+                    <td>
+                        <a href="{{ path('notacredito_show', { 'id': entity.idNotaCredito }) }}">{{ entity.idNotaCredito }}</a>
+                    </td>
+                    <td>{{ entity.nome }}</td>
+                    <td>{{ entity.chassis }}</td>
+                    <td>{{ entity.valor }}</td>
+                    <td>{% if entity.dtCadastro %}{{ entity.dtCadastro|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('notacredito_show', { 'id': entity.idNotaCredito }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('notacredito_edit', { 'id': entity.idNotaCredito }) }}">edit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('notacredito_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}

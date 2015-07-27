@@ -1,0 +1,51 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block title %}Elever-Página Configuracoes{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <h1>EbModulo list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Idmodulo</th>
+                <th>Nome</th>
+                <th>Ativo</th>
+                <th>Excluido</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>
+                    <a href="{{ path('configuracao_modulo_show', { 'id': entity.Idmodulo }) }}">{{ entity.Idmodulo }}</a>
+                </td>
+                <td>{{ entity.nome }}</td>
+                <td>{{ entity.ativo }}</td>
+                <td>{{ entity.excluido }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('configuracao_modulo_show', { 'id': entity.Idmodulo }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('configuracao_modulo_edit', { 'id': entity.Idmodulo }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('configuracao_modulo_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    </div>
+    {% endblock %}

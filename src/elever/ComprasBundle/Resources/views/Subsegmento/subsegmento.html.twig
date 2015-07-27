@@ -1,0 +1,30 @@
+<label for="idSubsegmento" class="control-label">Modelos</label>
+
+<table class="table">
+    {% if subsegmentos %}
+        <thead>
+        <tr>
+            <th></th>
+            <th>Modelo</th>
+            <th>Preco Tabela</th>
+            <th>Baumaster</th>
+            <th>Variante</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for subsegmento in subsegmentos %}
+            <tr>
+                <td><input type="radio" class="radio" value="{{ subsegmento.idSubsegmento }}"></td>
+                <td>{{ subsegmento.modelo }}</td>
+                <td>{{ subsegmento.precoTabela }}</td>
+                <td>{{ subsegmento.baumaster }}</td>
+                <td>{{ subsegmento.variante }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    {% else %}
+        <tr>
+            <td>Nenhum Item encontrado</td>
+        </tr>
+    {% endif %}
+</table>

@@ -1,0 +1,124 @@
+{% extends 'ClienteBundle::base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset("bundles/cliente/css/cliente.css") }}" />
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Novo cliente</h1>
+
+    <form action="/cliente/" method="post" id="newClienteForm" name="newClienteForm">
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-2">
+                    <label for="idUsuario" class="control-label">Responsavel: </label>
+                    <select name="idUsuario" id="idUsuario" class="form-control">
+                        {% if userList %}
+                            {% for user in userList %}
+                                <option value="{{ user.idUsuario }}">{{ user.nome }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label class="required control-label" for="nome">Nome: </label>
+                    <input type="text" placeholder="Digite o nome da conta" class="form-control" required="required" name="nome" id="nome">
+                </div>
+
+                <div class="col-xs-6">
+                    <label class="required control-label" for="email">Email de contato: </label>
+                    <input type="text" placeholder="Digite um email de contato" class="form-control" required="required" name="email" id="email">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+
+                    <label class="control-label" for="cnpj">Cnpj: </label>
+                    <input type="text" class="form-control" maxlength="100" name="cnpj" id="cnpj" placeholder="Digite aqui o cnpj">
+                </div>
+                <div class="col-xs-6">
+
+                    <label for="cpf" class="control-label">Cpf: </label>
+                    <input type="text" maxlength="15" class="form-control" name="cpf" id="cpf" placeholder="Digite aqui o cpf">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-8">
+                    <label for="emailOutro" class="control-label">Email outro: </label>
+                    <input type="email" class="form-control" maxlength="255" name="emailOutro" id="emailOutro" placeholder="Digite um email de contato secundário">
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-default">
+            {% include 'ClienteBundle:Endereco:form.html.twig' %}
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-4">
+
+                    <label for="idTemperatura" class="control-label">Temperatura: </label>
+                    <select name="idTemperatura" id="idTemperatura" class="form-control">
+                        {% if temperaturaList %}
+                            {% for temperatura in temperaturaList %}
+                                <option value="{{ temperatura.id }}">{{ temperatura.nome }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="col-xs-4">
+
+                    <label for="idMomento"  class="control-label">Momento: </label>
+                    <select name="idMomento" id="idMomento" class="form-control">
+                        {% if momentoList %}
+                            {% for momento in momentoList %}
+                                <option value="{{ momento.id }}">{{ momento.nome }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                    <label for="idClienteRelacionado" class="control-label">Relacionado com: </label>
+
+                    <select name="idClienteRelacionado" id="idClienteRelacionado" class="form-control">
+                        {% if clientList %}
+                            {% for client in clientList %}
+                                <option value="{{ client.id }}">{{ client.nome }}</option>
+                            {% endfor %}
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-6">
+                </div>
+                <div class="col-xs-6">
+                    <button name="submit" id="submit" type="submit" class="btn btn-default right">Criar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

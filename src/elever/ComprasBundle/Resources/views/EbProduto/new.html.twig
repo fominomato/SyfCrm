@@ -1,0 +1,129 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+
+
+    <div class="container">
+        <h1>Criação de pedidos</h1>
+
+        <form action="/compras/pedido/create" method="post" enctype="application/x-www-form-urlencoded">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-6">
+                        {{ form_errors(form) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <label for="{{ form.idProdutoCategoria.vars.id }}" class="control-label">Estratégia</label>
+                        {{ form_widget(form.idProdutoCategoria, {'attr': {'class': "form-control", "required" : 'true'} }) }}
+                    </div>
+
+                    <div class="col-xs-2">
+                        <label for="{{ form.idEmpresa.vars.id }}" class="control-label">Comprador</label>
+                        {{ form_widget(form.idEmpresa, {'attr': {'class': "form-control", "required" : 'true'} }) }}
+                    </div>
+
+                    <div class="col-xs-2">
+                        <label for="{{ form.idStatusProduto.vars.id }}" class="control-label">Status do pedido</label>
+                        {{ form_widget(form.idStatusProduto, {'attr': {'class': "form-control", "required" : 'true'} }) }}
+                    </div>
+
+                    <div class="col-xs-2">
+                        <label for="{{ form.idUsuario.vars.id }}" class="control-label">Responsável</label>
+                        {{ form_widget(form.idUsuario, {'attr': {'class': "form-control", "required" : 'true'} }) }}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <label for="{{ form.pedido.vars.id }}" class="control-label">Pedido</label>
+                        {{ form_widget(form.pedido, {'attr': {'class': "form-control", 'required' : 'true', 'placeholder': 'Nro pedido'} }) }}
+                    </div>
+
+                    <div class="col-xs-3">
+                        <label for="{{ form.chassis.vars.id }}" class="control-label">Chassis</label>
+                        {{ form_widget(form.chassis, {'attr': {'class': "form-control"} }) }}
+                    </div>
+
+                    <div class="col-xs-1">
+                        <label for="{{ form.valor.vars.id }}" class="control-label">Valor</label>
+                        {{ form_widget(form.moeda, {'attr': {'class': "form-control", 'disabled' : 'true'} }) }}
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="{{ form.moeda.vars.id }}" class="control-label">&nbsp;</label>
+                        {{ form_widget(form.valor, {'attr': {'class': "form-control", 'required' : 'true',} }) }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <label for="elever_comprasbundle_ebproduto_idSegmento" class="control-label">Segmentos</label>
+
+                        <select name="elever_comprasbundle_ebproduto_idSegmetno" id="elever_comprasbundle_ebproduto_idSegmento" class="form-control ui-selectmenu-optgroup">
+                            {% for segmento in segmentos %}
+                                <option value="{{ segmento.id }}">{{ segmento.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-7 subsegmento">
+                        Selecione antes o filtro de segmento!
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-2">
+                        <label for="idCondicaoPagamento" class="control-label">Condicoes de pagamento</label>
+
+                        <select name="idCondicaoPagamento" id="idCondicaoPagamento" class="form-control ui-selectmenu-optgroup">
+                            {% for condicao in condicoes %}
+                                <option value="{{ condicao.id }}">{{ condicao.nome }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <div class="listregras">
+                            <span class="ui-dialog-title">Lista de regras aplicadas nesta compra</span>
+                            <div id="listItemRegra">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-4"></div>
+                    <div class="col-xs-2">
+                        <input type="submit" class="btn btn-default" value="Registrar">
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset("bundles/compras/js/pedido.js") }}"></script>
+{% endblock %}

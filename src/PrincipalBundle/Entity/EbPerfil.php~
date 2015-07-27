@@ -1,0 +1,53 @@
+<?php
+
+namespace AutenticacaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EbPerfil
+ *
+ * @ORM\Table(name="eb_perfil", uniqueConstraints={@ORM\UniqueConstraint(name="id_perfil_UNIQUE", columns={"id_perfil"})})
+ * @ORM\Entity
+ */
+class EbPerfil
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_perfil", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idPerfil;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=45, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ativo", type="string", length=45, nullable=false)
+     */
+    private $ativo = '1';
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="EbModulo", mappedBy="idPerfil")
+     */
+    private $idModulo;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->idModulo = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+}

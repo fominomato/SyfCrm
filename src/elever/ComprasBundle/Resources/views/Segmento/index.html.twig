@@ -1,0 +1,47 @@
+{% extends 'ComprasBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+    <h1>Listagens de categoria para segmentos</h1>
+
+    <table class="records_list">
+        <thead>
+        <tr>
+            <th>Idsegmento</th>
+            <th>Nome</th>
+            <th>Ativo</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>
+                    <a href="{{ path('compras_segmento_show', { 'id': entity.idSegmento }) }}">{{ entity.idSegmento }}</a>
+                </td>
+                <td>{{ entity.nome }}</td>
+                <td>{{ entity.ativo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('compras_segmento_show', { 'id': entity.idSegmento }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('compras_segmento_edit', { 'id': entity.idSegmento }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('compras_segmento_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    <div>
+{% endblock %}

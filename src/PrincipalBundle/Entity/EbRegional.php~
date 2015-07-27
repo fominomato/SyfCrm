@@ -1,0 +1,39 @@
+<?php
+
+namespace AutenticacaoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * EbRegional
+ *
+ * @ORM\Table(name="eb_regional")
+ * @ORM\Entity
+ */
+class EbRegional
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_regional", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idRegional;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nome", type="string", length=150, nullable=false)
+     */
+    private $nome;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ativo", type="string", length=1, nullable=false)
+     */
+    private $ativo = '1';
+
+
+}
